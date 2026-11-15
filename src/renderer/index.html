@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: blob:; script-src 'self'; style-src 'self'; img-src 'self' data: blob:; connect-src 'self' https: wss:; media-src 'self' blob:">
+  <title>Interview Copilot</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="titlebar">
+    <div class="drag"><span class="spark">✦</span> Interview Copilot</div>
+    <div class="window-buttons"><button id="minimize" title="Minimize">−</button><button id="close" title="Close">×</button></div>
+  </header>
+  <main>
+    <div class="topline"><span id="listenStatus" class="status">Ready · Windows system audio</span><span id="activity" aria-live="polite"></span></div>
+    <div class="actions">
+      <button id="listen" class="primary">Listen</button>
+      <button id="capture">Capture &amp; solve</button>
+    </div>
+    <label for="question">Question</label>
+    <div class="question-row"><textarea id="question" rows="2" placeholder="Ask anything, or use Capture &amp; solve for a problem on screen"></textarea><button id="ask" class="primary">Ask</button></div>
+    <div id="interim" class="interim" aria-live="polite"></div>
+    <section id="keySetup" class="key-setup hidden">
+      <strong>Connect your keys</strong>
+      <p>Gemini answers questions and solves screenshots. Deepgram transcribes Windows system audio.</p>
+      <input id="geminiKey" type="password" placeholder="Gemini API key" autocomplete="off">
+      <input id="deepgramKey" type="password" placeholder="Deepgram API key" autocomplete="off">
+      <button id="saveKeys">Save keys</button>
+    </section>
+    <h2>Solution</h2>
+    <div id="answerOutput" class="answer-output" aria-live="polite"><p class="empty">Your full answer will appear here.</p></div>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,34 @@
+{
+  "name": "interview-copilot",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Windows-first technical interview practice and permitted-assistance copilot",
+  "main": "src/main.js",
+  "scripts": {
+    "prestart": "electron-builder install-app-deps",
+    "start": "electron .",
+    "pretest": "npm rebuild better-sqlite3",
+    "test": "node --test tests/*.test.js",
+    "dist:win": "electron-builder --win nsis --x64",
+    "dist:dir": "electron-builder --dir"
+  },
+  "dependencies": {
+    "better-sqlite3": "^12.4.1",
+    "mammoth": "^1.11.0",
+    "pdf-parse": "^1.1.1",
+    "ws": "^8.18.3"
+  },
+  "devDependencies": {
+    "electron": "^39.0.0",
+    "electron-builder": "^26.0.12"
+  },
+  "build": {
+    "appId": "com.local.interviewcopilot",
+    "productName": "Interview Copilot",
+    "files": ["src/**/*", "package.json"],
+    "asarUnpack": ["node_modules/better-sqlite3/**/*"],
+    "directories": {"output": "release"},
+    "win": {"target": [{"target": "nsis", "arch": ["x64"]}]},
+    "nsis": {"oneClick": false, "allowToChangeInstallationDirectory": true}
+  }
+}
